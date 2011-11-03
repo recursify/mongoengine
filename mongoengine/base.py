@@ -906,11 +906,6 @@ class BaseDocument(object):
             u = '[Bad Unicode data]'
         return u'<%s: %s>' % (self.__class__.__name__, u)
 
-    def __str__(self):
-        if hasattr(self, '__unicode__'):
-            return unicode(self).encode('utf-8')
-        return '%s object' % self.__class__.__name__
-
     def __eq__(self, other):
         if isinstance(other, self.__class__) and hasattr(other, 'id'):
             if self.id == other.id:
