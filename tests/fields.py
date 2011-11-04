@@ -1105,8 +1105,9 @@ class FieldTest(unittest.TestCase):
         Person.drop_collection()
         Person(name="Wilson Jr").save()
 
-        self.assertEquals(repr(Person.objects(city=None)),
-                            "[<Person: Person object>]")
+        p = Person.objects(city=None)[0]
+        self.assertTrue(isinstance(p, Person))
+
 
     def test_binary_fields(self):
         """Ensure that binary fields can be stored and retrieved.

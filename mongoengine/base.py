@@ -899,13 +899,6 @@ class BaseDocument(object):
     def __len__(self):
         return len(self._data)
 
-    def __repr__(self):
-        try:
-            u = unicode(self)
-        except (UnicodeEncodeError, UnicodeDecodeError):
-            u = '[Bad Unicode data]'
-        return u'<%s: %s>' % (self.__class__.__name__, u)
-
     def __eq__(self, other):
         if isinstance(other, self.__class__) and hasattr(other, 'id'):
             if self.id == other.id:

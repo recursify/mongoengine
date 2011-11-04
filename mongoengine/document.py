@@ -170,8 +170,8 @@ class Document(BaseDocument):
             for name, cls in self._fields.items():
                 if isinstance(cls, (ReferenceField, GenericReferenceField)):
                     ref = getattr(self, name)
-                    if ref and str(ref) not in _refs:
-                        _refs.append(str(ref))
+                    if ref and ref.__class__.__name__ not in _refs:
+                        _refs.append(ref.__class__.__name__)
                         ref.save(safe=safe, force_insert=force_insert,
                                  validate=validate, write_options=write_options,
                                  _refs=_refs)

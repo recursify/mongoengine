@@ -576,7 +576,6 @@ class QuerySetTest(unittest.TestCase):
         self.Person(name='Person 2').save()
 
         queryset = self.Person.objects
-        self.assertEquals('[<Person: Person object>, <Person: Person object>]', repr(queryset))
         for person in queryset:
             self.assertEquals('.. queryset mid-iteration ..', repr(queryset))
 
